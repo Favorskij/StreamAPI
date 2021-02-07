@@ -113,19 +113,19 @@ public class Main {
     public static void main(String[] args) {
 
         List<String> list = new ArrayList<>();
+        list.add("Рома");
+        list.add("Игорь");
+        list.add("Вася");
 
-        
         Stream<String> stream = list.stream();
         stream.forEach(System.out::println);
         stream.filter(s -> s.contains("Stream API"));
         stream.forEach(System.out::println);
-
     }
-
 }
 ```
 
-Код на девятой строке выполнится, а вот на десятой выбросит исключение `java.lang.IllegalStateException:` stream has already been operated upon or closed.
+Код на одинадцатой строке выполнится, а вот на двенадцатой выбросит исключение `java.lang.IllegalStateException:` stream has already been operated upon or closed.
 
 Исходя из первой особенности, делаем вывод, что обработка происходит от терминального оператора к источнику. Это действительно так и это удобно. Мы можем в качестве источника использовать генерируемую бесконечную последовательность, скажем, факториала или чисел Фибоначчи, но обрабатывать лишь некоторую её часть.
 
